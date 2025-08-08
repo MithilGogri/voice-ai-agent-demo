@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voice AI Agents</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Voice AI</div>
+    <nav>
+      <a href="#workflows">Workflows</a>
+      <a href="#usecases">Use Cases</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#docs">Docs</a>
+      <a href="#resources">Resources</a>
+      <a href="#careers">Careers</a>
+      <a href="#dashboard" class="dashboard-btn">Open Dashboard</a>
+    </nav>
+  </header>
+
+  <section class="hero" style="background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div>
+      <h1>
+        <span class="highlight">Voice AI agents</span><br />
+        for developers
+      </h1>
+    </div>
+  </section>
+
+  <section id="workflows" class="content-section">
+    <h2>Workflows</h2>
+    <p>Design intelligent workflows that help voice agents handle dynamic interactions.</p>
+  </section>
+
+  <section id="usecases" class="content-section">
+    <h2>Use Cases</h2>
+    <p>Explore how voice AI can enhance customer support, bookings, sales, and more.</p>
+  </section>
+
+  <section id="pricing" class="content-section">
+    <h2>Pricing</h2>
+    <p>Transparent pricing plans that scale with your needs.</p>
+  </section>
+
+  <section id="docs" class="content-section">
+    <h2>Docs</h2>
+    <p>Developer-first documentation to get you building in minutes.</p>
+  </section>
+
+  <section id="resources" class="content-section">
+    <h2>Resources</h2>
+    <p>Find guides, SDKs, tutorials, and more.</p>
+  </section>
+
+  <section id="careers" class="content-section">
+    <h2>Careers</h2>
+    <p>We’re hiring! Help us shape the future of voice AI.</p>
+  </section>
+
+  <section id="dashboard" class="content-section">
+    <h2>Dashboard</h2>
+    <p>Log in to manage your agents, logs, and analytics.</p>
+  </section>
+
+  <footer style="background-color: rgba(0, 0, 0, 0.7); padding: 20px 40px; text-align: center; color: white; font-size: 0.9rem; width: 100%; box-sizing: border-box;">
+    <div class="footer-content">
+      <p style="margin: 0;">&copy; 2025 Voice AI. All rights reserved.</p>
+      <p style="margin: 0;">
+        <a href="#privacy" style="color: #aad4ff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
+        <a href="#terms" style="color: #aad4ff; text-decoration: none; margin: 0 8px;">Terms of Service</a> | 
+        <a href="#contact" style="color: #aad4ff; text-decoration: none; margin: 0 8px;">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const assistant = {
+      name: "Mithil",
+      voice: {
+        voiceId: "wD6AxxDQzhi2E9kMbk9t",
+        provider: "11labs",
+        stability: 0.5,
+        similarityBoost: 0.75
+      },
+      model: {
+        model: "gpt-4o",
+        messages: [
+          {
+            role: "system",
+            content: "Mithil is a sophisticated AI web assistant, designed by Jannis Moore...."
+          }
+        ],
+        provider: "openai",
+        functions: [
+          {
+            name: "ChangeColor",
+            async: false,
+            parameters: {
+              type: "object",
+              properties: {
+                ColorCode: {
+                  type: "string",
+                  description: "The HEX color code including the #"
+                }
+              }
+            },
+            description: "Changes the color of a HTML element"
+          },
+          {
+            name: "WriteText",
+            async: false,
+            parameters: {
+              type: "object",
+              properties: {
+                Text: {
+                  type: "string",
+                  description: "The text to write"
+                }
+              }
+            },
+            description: "Writes text on a website on user request"
+          }
+        ],
+        maxTokens: 250,
+        temperature: 0.7,
+        emotionRecognitionEnabled: true
+      },
+      recordingEnabled: true,
+      firstMessage: "Hello, this is Mithil. How may I assist you today?",
+      voicemailMessage: "You've reached our voicemail. Please leave a message after the beep, and we'll get back to you as soon as possible.",
+      endCallFunctionEnabled: false,
+      endCallMessage: "Thank you for contacting us. Have a great day!",
+      transcriber: {
+        model: "nova-2",
+        keywords: [],
+        language: "en",
+        provider: "deepgram"
+      },
+      clientMessages: [
+        "transcript",
+        "hang",
+        "function-call",
+        "speech-update",
+        "metadata",
+        "conversation-update"
+      ],
+      serverMessages: [
+        "end-of-call-report",
+        "status-update",
+        "hang",
+        "function-call"
+      ],
+      dialKeypadFunctionEnabled: false,
+      endCallPhrases: ["goodbye"],
+      hipaaEnabled: false,
+      voicemailDetectionEnabled: false
+    };
+
+    const apiKey = "16cef126-07d2-42d8-bc7d-5948e72f9506";
+
+    const buttonConfig = {
+      position: "bottom-right",
+      width: "50px",
+      height: "50px",
+      idle: {
+        color: "#87CEFA",
+        type: "pill",
+        title: "Have a question?",
+        subtitle: "Talk with our assistant",
+        icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone.svg"
+      },
+      loading: {
+        color: "rgb(93, 124, 202)",
+        type: "pill",
+        title: "Connecting...",
+        subtitle: "Please wait",
+        icon: "https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg"
+      },
+      active: {
+        color: "rgb(255, 0, 0)",
+        type: "pill",
+        title: "Call is in progress...",
+        subtitle: "End the call.",
+        icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg"
+      }
+    };
+
+    (function (d, t) {
+      var g = document.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+      g.defer = true;
+      g.async = true;
+      s.parentNode.insertBefore(g, s);
+
+      g.onload = function () {
+        const vapiInstance = window.vapiSDK.run({
+          apiKey: apiKey,
+          assistant: assistant,
+          config: buttonConfig
+        });
+
+        vapiInstance.on("speech-start", () => {
+          console.log("Speech has started");
+        });
+
+        vapiInstance.on("speech-end", () => {
+          console.log("Speech has ended");
+        });
+
+        vapiInstance.on("call-start", () => {
+          console.log("Call has started");
+        });
+
+        vapiInstance.on("call-end", () => {
+          console.log("Call has stopped");
+        });
+
+        vapiInstance.on("volume-level", (volume) => {
+          console.log(`Assistant volume level: ${volume}`);
+        });
+
+        vapiInstance.on("message", (message) => {
+          console.log(message);
+        });
+
+        vapiInstance.on("error", (e) => {
+          console.error(e);
+        });
+      };
+    })(document, "script");
+  </script>
+
+  <div id="root"></div>
+</body>
+</html>
