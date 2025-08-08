@@ -95,32 +95,69 @@
         provider: "openai",
         functions: [
           {
-            name: "ChangeColor",
+            name: "ArrangeCall",
             async: false,
             parameters: {
               type: "object",
               properties: {
-                ColorCode: {
+                ContactName: {
                   type: "string",
-                  description: "The HEX color code including the #"
+                  description: "Name of the person to call"
+                },
+                Time: {
+                  type: "string",
+                  description: "Time for the call, e.g., 'tomorrow 3 PM'"
                 }
-              }
+              },
+              required: ["ContactName", "Time"]
             },
-            description: "Changes the color of a HTML element"
+            description: "Arranges a call with a specified contact at a given time"
           },
           {
-            name: "WriteText",
+            name: "ScheduleMeeting",
             async: false,
             parameters: {
               type: "object",
               properties: {
-                Text: {
+                MeetingTitle: {
                   type: "string",
-                  description: "The text to write"
+                  description: "Title or subject of the meeting"
+                },
+                Date: {
+                  type: "string",
+                  description: "Date of the meeting, e.g., '2025-08-10'"
+                },
+                Time: {
+                  type: "string",
+                  description: "Time of the meeting, e.g., '10:00 AM'"
                 }
-              }
+              },
+              required: ["MeetingTitle", "Date", "Time"]
             },
-            description: "Writes text on a website on user request"
+            description: "Schedules a meeting with given title, date, and time"
+          },
+          {
+            name: "TakeFollowUp",
+            async: false,
+            parameters: {
+              type: "object",
+              properties: {
+                Topic: {
+                  type: "string",
+                  description: "Topic or subject to follow up on"
+                },
+                ContactName: {
+                  type: "string",
+                  description: "Person to follow up with"
+                },
+                Deadline: {
+                  type: "string",
+                  description: "Deadline or date for follow-up"
+                }
+              },
+              required: ["Topic", "ContactName"]
+            },
+            description: "Takes a follow-up action on a specified topic with a contact"
           }
         ],
         maxTokens: 250,
