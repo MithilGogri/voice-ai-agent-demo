@@ -1,0 +1,232 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  background-image: url('assets/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1 {
+  animation: slideDown 1s ease-out;
+}
+
+.animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+
+.animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+nav a, .dashboard-btn, button#callWithVapi {
+  transition: transform 0.3s ease;
+}
+
+nav a:hover,
+.dashboard-btn:hover,
+button#callWithVapi:hover {
+  transform: scale(1.05);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px 40px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  background-color: black;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #aad4ff;
+}
+
+.dashboard-btn {
+  padding: 8px 15px;
+  background-color: #0b78f2;
+  border-radius: 6px;
+  color: white;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  text-align: center;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  line-height: 1.2;
+  font-weight: bold;
+}
+
+.highlight {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.content-section {
+  padding: 100px 40px;
+  backdrop-filter: brightness(1.1);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.content-section h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.chat-section {
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.chat-container {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+textarea#vapiTyping {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  resize: none;
+  border-radius: 6px;
+  border: none;
+}
+
+button#callWithVapi {
+  padding: 12px 25px;
+  font-size: 1rem;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button#callWithVapi:hover {
+  opacity: 0.85;
+}
+
+.message {
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+.message.user {
+  background-color: rgba(255, 255, 255, 0.2);
+  align-self: flex-end;
+}
+
+.message.assistant {
+  background-color: rgba(0, 123, 255, 0.3);
+  align-self: flex-start;
+}
+
+.hero-subtitle {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subtitle-line {
+  font-size: 1.5rem;
+  padding: 10px 0;
+  transition: all 0.6s ease;
+  color: white;
+  background: transparent;
+  width: fit-content;
+}
+
+.subtitle-line.in-view {
+  background-color: white;
+  color: #007bff;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 6px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: url('/assets/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+}
+
+.content-section {
+  background-color: rgba(0, 0, 0, 0.4);
+}
